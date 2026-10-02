@@ -1,0 +1,17 @@
+Resolved 2 packages in 18ms
+   Building runanywhere @ <repo>/bindings/python
+error: Failed to build `runanywhere @ <repo>/bindings/python`
+  cause: The build backend returned an error
+  cause: Call to `ra_build_backend.build_wheel` failed (exit status: 1)
+
+         [stderr]
+         [runanywhere-build] cannot generate the IDL bindings; missing:
+           protoc (see core/VERSIONS::PROTOC_VERSION)
+           protobuf (pip install 'protobuf>=6.33,<7')
+           grpcio-tools (pip install 'grpcio-tools==1.71.*')
+
+         Either install those, or generate once up front and rebuild:
+           ./scripts/setup/setup-toolchain.sh
+           ./idl/codegen/generate_all.sh --only python
+         (CI does the latter via .github/actions/generate-idl.)
+

@@ -1,0 +1,46 @@
+diff --git a/bindings/python/README.md b/bindings/python/README.md
+index 25ee9b8..eb276c6 100644
+--- a/bindings/python/README.md
++++ b/bindings/python/README.md
+@@ -12,6 +12,14 @@ pip install runanywhere==0.20.11
+ 
+ Wheels bundle the compiled native runtime and dependent libraries on Windows, macOS, and Linux. Python **3.9+** and `numpy >= 1.21` are required.
+ 
++> **Building from source (Linux).** If no wheel is available for your platform yet, build from
++> this directory: `pip install 'grpcio-tools==1.71.*'` (plus `protoc` on PATH), run
++> `./idl/codegen/generate_all.sh --only python` from the repo root, then `pip install .`.
++> A plain local build is not repaired by `auditwheel`, so `libonnxruntime.so.1` is not placed
++> next to `_core`; build with `-C build-dir=build/py` and run
++> `python scripts/bundle_native.py build/py` (or copy the ONNX Runtime library the build
++> downloaded into `runanywhere/_native/`) before `import runanywhere`.
++
+ Optional extras:
+ 
+ ```bash
+diff --git a/bindings/python/_build/ra_build_backend.py b/bindings/python/_build/ra_build_backend.py
+index 9a8ddc8..1855585 100644
+--- a/bindings/python/_build/ra_build_backend.py
++++ b/bindings/python/_build/ra_build_backend.py
+@@ -91,14 +91,20 @@ def _missing_tools() -> list[str]:
+     missing = []
+     if not shutil.which("protoc"):
+         missing.append("protoc (see core/VERSIONS::PROTOC_VERSION)")
++    # One install line for both: grpcio-tools 1.71.* requires protobuf<6, so
++    # suggesting 'protobuf>=6.33,<7' alongside it is unsatisfiable (uv/pip refuse).
++    # grpcio-tools pulls a compatible protobuf 5.29.x, which the generators accept
++    # (the [test] extra already allows protobuf>=5.29).
++    py_hint = "pip install 'grpcio-tools==1.71.*'  (also installs a compatible protobuf)"
+     try:
+         import google.protobuf  # noqa: F401
+     except ImportError:
+-        missing.append("protobuf (pip install 'protobuf>=6.33,<7')")
++        missing.append(f"protobuf ({py_hint})")
+     try:
+         import grpc_tools.protoc  # noqa: F401
+     except ImportError:
+-        missing.append("grpcio-tools (pip install 'grpcio-tools==1.71.*')")
++        if not any(py_hint in m for m in missing):
++            missing.append(f"grpcio-tools ({py_hint})")
+     return missing
+ 
+ 

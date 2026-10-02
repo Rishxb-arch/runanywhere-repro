@@ -1,0 +1,28 @@
+[WARN] RAC.Core: Platform adapter slot get_vendor_id is NULL; device id will be synthesized + persisted via secure_set | file=rac_core.cpp:234, func=rac_init
+[WARN] RAC.Core: Platform adapter slot http_download is NULL | file=rac_core.cpp:242, func=rac_init
+[WARN] Sherpa: rac_plugin_register failed: -811 | file=rac_backend_sherpa_register.cpp:564, func=rac_backend_sherpa_register
+rac_llm_create: model_id=~/.runanywhere/models/smollm2-360m/model.gguf[RAC][WARN][LLM.Service] Model NOT found in registry (result=-423), using default framework=1 | file=rac_service_factory_internal.h:165, func=resolve_model_refe
+[WARN] LLM.Service: Model NOT found in registry (result=-423), using default framework=1 | file=rac_service_factory_internal.h:165, func=resolve_model_reference
+LLM service created successfully[RAC][WARN][STT.Service] Model NOT found in registry (result=-423), using default framework=12 | file=rac_service_factory_internal.h:165, func=resolve_model_reference
+[WARN] STT.Service: Model NOT found in registry (result=-423), using default framework=12 | file=rac_service_factory_internal.h:165, func=resolve_model_reference
+[WARN] STT.Service: plugin 'sherpa' does not serve transcribe; falling back to priority | file=rac_service_factory_internal.h:289, func=create_plugin_service
+[ERROR] STT.Service: no registered plugin 'sherpa' serves transcribe | file=rac_service_factory_internal.h:299, func=create_plugin_service
+[ERROR] STT.Component: Failed to create STT service | file=stt_module.cpp:609, func=stt_create_service
+[ERROR] STT.Lifecycle: Failed to load model | file=lifecycle_manager.cpp:404, func=rac_lifecycle_load
+[WARN] STT.Service: Model NOT found in registry (result=-423), using default framework=12 | file=rac_service_factory_internal.h:165, func=resolve_model_reference
+[WARN] STT.Service: plugin 'sherpa' does not serve transcribe; falling back to priority | file=rac_service_factory_internal.h:289, func=create_plugin_service
+[ERROR] STT.Service: no registered plugin 'sherpa' serves transcribe | file=rac_service_factory_internal.h:299, func=create_plugin_service
+[ERROR] STT.Component: Failed to create STT service | file=stt_module.cpp:609, func=stt_create_service
+[ERROR] STT.Lifecycle: Failed to load model | file=lifecycle_manager.cpp:404, func=rac_lifecycle_load
+[WARN] TTS.Service: Model NOT found in registry (result=-423), using default framework=12 | file=rac_service_factory_internal.h:165, func=resolve_model_reference
+[WARN] TTS.Service: plugin 'sherpa' does not serve synthesize; falling back to priority | file=rac_service_factory_internal.h:289, func=create_plugin_service
+[ERROR] TTS.Service: no registered plugin 'sherpa' serves synthesize | file=rac_service_factory_internal.h:299, func=create_plugin_service
+[ERROR] TTS.Component: Failed to create TTS service | file=tts_module.cpp:289, func=tts_create_service
+[ERROR] TTS.Lifecycle: Failed to load model | file=lifecycle_manager.cpp:404, func=rac_lifecycle_load
+[WARN] VAD.Component: Energy threshold is very high (> 0.1) and may miss speech | file=vad_module.cpp:562, func=rac_vad_component_configure
+[WARN] Embeddings.Service: Model NOT found in registry (result=-423), using default framework=1 | file=rac_service_factory_internal.h:165, func=resolve_model_reference
+[WARN] Embeddings.Service: Model NOT found in registry, inferred framework=0 from path | file=rac_embeddings_service.cpp:83, func=create_service
+rac_llm_create: model_id=~/.runanywhere/models/qwen2.5-0.5b/model.gguf[RAC][WARN][LLM.LlamaCpp.GGML] load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+[WARN] LLM.LlamaCpp.GGML: load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden | file=rac_llamacpp_logging.cpp:93, func=ggml_log_trampoline
+[WARN] LLM.LlamaCpp.GGML: load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden | file=rac_llamacpp_logging.cpp:93, func=ggml_log_trampoline
+LLM service created successfully

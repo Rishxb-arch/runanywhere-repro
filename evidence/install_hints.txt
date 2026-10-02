@@ -1,0 +1,16 @@
+== 1. README: pip install runanywhere==0.20.11
+error: No solution found when resolving dependencies
+  cause: Because runanywhere was not found in the package registry and you require runanywhere==0.20.11, we can conclude that your requirements are unsatisfiable.
+PyPI JSON API status: 404
+
+== 2. the build backend's hint, installed together (protobuf>=6.33,<7 + grpcio-tools==1.71.*)
+error: No solution found when resolving dependencies
+  cause: Because grpcio-tools>=1.71.0rc2,<=1.71.2 depends on protobuf>=5.26.1,<6.0.dev0 and you require protobuf>=6.33,<7, we can conclude that your requirements and grpcio-tools>=1.71.0rc2,<=1.71.2 are incompatible.
+         And because you require grpcio-tools==1.71.*, we can conclude that your requirements are unsatisfiable.
+
+== 2b. only grpcio-tools==1.71.* (what actually works; pulls protobuf 5.29.x)
+ + grpcio==1.84.0
+ + grpcio-tools==1.71.2
+ + protobuf==5.29.6
+ + setuptools==84.0.0
+ + typing-extensions==4.16.0

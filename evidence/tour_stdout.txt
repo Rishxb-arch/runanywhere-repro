@@ -1,0 +1,30 @@
+
+### generate max_output_tokens=32 (model omitted) OK (4.1s)
+('The capital of France is Paris.', 7, 8.1, <FinishReason.STOP: 1>)
+
+### generate_stream OK (32.5s)
+("A sunset is a breathtaking event that occurs when the sun begins its descent towards the horizon. It's a moment of transformation, as the day transforms into a warm twilight of orange and pink hues.\n\nThe sky transforms first, with colors deepening from pale oranges to deep purples and sometimes even", (281, 9.0))
+
+### multi-turn OK (1.7s)
+Hamlet is a play written by William Shakespeare, in the early 17th century.
+
+### generate_structured OK (1.9s)
+({'city': 'Paris', 'temp_c': 20}, True)
+
+### tools OK (40.4s)
+([], "The weather in Berlin is quite varied. In the mornings, it can be chilly and rainy with temperatures often dropping below 0°C (32°F) at night. The fog is also common, especially during spring or autumn months.\n\nHowever, as you head into the city center, you'll find a more comfortable climate. Summer", 'handler calls:', [])
+
+### stt whisper-base (TTS wav) FAILED (72.9s): SDKException: stt load_model
+
+### stt whisper-base (beckett.wav) FAILED (0.0s): SDKException: stt load_model
+
+### tts piper-amy FAILED (20.3s): SDKException: tts load_voice
+
+### vad OK (0.0s)
+VadResult(is_speech=False, probability=0.0, segments=[])
+
+### embed minilm OK (8.8s)
+(None, None)
+
+### rag OK (64.8s)
+([Match(text='Paris is the capital of France.', score=1.0, metadata={'source_text': 'Paris is the capital of France.'})], 'Paris is the capital of France.')
